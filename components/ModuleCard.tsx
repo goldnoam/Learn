@@ -16,8 +16,9 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
       rel="noopener noreferrer"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative flex flex-col p-6 rounded-3xl bg-slate-800/50 border border-slate-700 hover:border-slate-600 transition-all duration-300 hover:shadow-2xl hover:shadow-slate-900/50 hover:-translate-y-2 overflow-visible"
+      whileHover={{ scale: 1.03, y: -8 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      className="group relative flex flex-col p-6 rounded-3xl bg-slate-800/50 border border-slate-700 hover:border-slate-500 transition-colors duration-300 hover:shadow-2xl hover:shadow-slate-900/80 overflow-visible"
     >
       {/* Background Gradient Splash (Visible on Hover) - Contained in a rounded div to prevent overflow while allowing tooltip to be visible */}
       <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">

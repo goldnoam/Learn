@@ -1,13 +1,25 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const { scrollY } = useScroll();
+  
+  // Parallax transforms
+  const yBackground1 = useTransform(scrollY, [0, 500], [0, 150]);
+  const yBackground2 = useTransform(scrollY, [0, 500], [0, -150]);
+
   return (
     <div className="relative py-16 md:py-24 overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <motion.div 
+        style={{ y: yBackground1 }}
+        className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" 
+      />
+      <motion.div 
+        style={{ y: yBackground2 }}
+        className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" 
+      />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.div

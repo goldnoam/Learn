@@ -6,8 +6,7 @@ import {
   Wand2, 
   Cpu, 
   Scissors, // Used as a proxy for knitting/crafts
-  Siren,
-  BookOpen
+  Siren
 } from 'lucide-react';
 import { LearningModule } from './types';
 

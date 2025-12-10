@@ -1,17 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LEARNING_MODULES } from './constants';
 import ModuleCard from './components/ModuleCard';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
-import { Search } from 'lucide-react';
+import { Search, ArrowUp } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const filteredModules = LEARNING_MODULES.filter(module => 
-    module.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    module.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const filteredModules = LEARNING_MODULES.filter(module => {
+    const term = searchTerm.toLowerCase().trim();
+    if (!term) return true;
+    
+    return (
+      module.title.toLowerCase().includes(term) ||
+      module.description.toLowerCase().includes(term)
+    );
+  });
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50 font-sans selection:bg-purple-500/30">
@@ -30,6 +50,7 @@ const App: React.FC = () => {
             placeholder="חיפוש נושא לימוד..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            autoComplete="off"
           />
         </div>
 
@@ -67,6 +88,22 @@ const App: React.FC = () => {
         </div>
 
         <Footer />
+        
+        {/* Scroll to Top Button */}
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.5, y: 20 }}
+              onClick={scrollToTop}
+              className="fixed bottom-8 right-8 z-50 p-3 bg-purple-600 hover:bg-purple-500 text-white rounded-full shadow-lg shadow-purple-900/50 border border-purple-400/30 backdrop-blur-sm transition-colors group"
+              aria-label="גלול לראש העמוד"
+            >
+              <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300" />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
