@@ -13,7 +13,15 @@ export default {
       colors: {
         card: '#1e293b',
         cardHover: '#334155',
-      }
+      },
+      keyframes: {
+        shimmer: {
+          '100%': { transform: 'translateX(100%)' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 1.5s infinite',
+      },
     },
   },
   plugins: [],
