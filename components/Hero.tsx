@@ -14,11 +14,11 @@ const Hero: React.FC = () => {
       {/* Background decorative elements */}
       <motion.div 
         style={{ y: yBackground1 }}
-        className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" 
+        className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 mix-blend-multiply dark:mix-blend-normal" 
       />
       <motion.div 
         style={{ y: yBackground2 }}
-        className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" 
+        className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 dark:bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 mix-blend-multiply dark:mix-blend-normal" 
       />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -26,9 +26,9 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 text-slate-300 text-sm font-medium mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium mb-6"
         >
-          <Sparkles className="w-4 h-4 text-yellow-400" />
+          <Sparkles className="w-4 h-4 text-yellow-500 dark:text-yellow-400" />
           <span>עולם של ידע והעשרה</span>
         </motion.div>
         
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-6 leading-tight"
+          className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 mb-6 leading-tight"
         >
           בחר את ההרפתקה הבאה שלך
         </motion.h1>
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
         >
           פורטל הלימודים המקיף לילדים, נוער ומבוגרים.
           <br className="hidden md:block"/>
