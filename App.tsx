@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { LEARNING_MODULES } from './constants';
 import ModuleCard from './components/ModuleCard';
 import SkeletonCard from './components/SkeletonCard';
@@ -11,6 +11,7 @@ const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [showScrollButtons, setShowScrollButtons] = useState(false);
+  const firstRender = useRef(true);
   
   // Theme Toggle State with Persistence
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -54,13 +55,16 @@ const App: React.FC = () => {
 
   // Search debounce and loading simulation
   useEffect(() => {
-    if (searchTerm) {
-      setIsLoading(true);
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 500); // Debounce delay
-      return () => clearTimeout(timer);
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
     }
+
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Debounce delay
+    return () => clearTimeout(timer);
   }, [searchTerm]);
 
   const toggleTheme = () => {
