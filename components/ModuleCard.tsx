@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LearningModule } from '../types';
 
@@ -16,10 +16,27 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
       rel="noopener noreferrer"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.03, y: -8 }}
-      transition={{ type: "spring", stiffness: 400, damping: 25 }}
-      className="group relative flex flex-col p-6 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 transition-colors duration-300 hover:shadow-2xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/80 overflow-visible"
+      whileHover={{ scale: 1.02, y: -5 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className={`group relative flex flex-col p-6 rounded-3xl bg-white dark:bg-slate-800/50 transition-all duration-300 overflow-visible ${
+        module.featured 
+          ? 'border-2 border-amber-400 dark:border-amber-500 shadow-xl shadow-amber-500/10 dark:shadow-amber-900/20 hover:shadow-amber-500/30 dark:hover:shadow-amber-900/40' 
+          : 'border border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 hover:shadow-2xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/80'
+      }`}
     >
+      {/* Featured Badge */}
+      {module.featured && (
+        <div className="absolute -top-3 left-6 z-30">
+          <div className="relative">
+             <div className="absolute inset-0 bg-amber-400 blur-md rounded-full opacity-40 animate-pulse"></div>
+             <div className="relative flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg border border-amber-300">
+               <Star className="w-3 h-3 fill-white" />
+               <span>מומלץ</span>
+             </div>
+          </div>
+        </div>
+      )}
+
       {/* Background Gradient Splash (Visible on Hover) - Contained in a rounded div to prevent overflow while allowing tooltip to be visible */}
       <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
         <div 

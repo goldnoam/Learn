@@ -9,4 +9,5 @@ export interface LearningModule {
   gradient: string;
   textColor: string;
   category: 'science' | 'arts' | 'tech' | 'emergency';
+  featured?: boolean;
 }

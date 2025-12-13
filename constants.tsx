@@ -6,7 +6,9 @@ import {
   Wand2, 
   Cpu, 
   Scissors, // Used as a proxy for knitting/crafts
-  Siren
+  Siren,
+  Music,
+  BookOpen
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -42,6 +44,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     category: 'arts'
   },
   {
+    id: 'hebrew',
+    title: 'לימוד עברית',
+    url: 'https://learnivrit.vercel.app/',
+    description: 'שיפור קריאה, כתיבה והבנת הנקרא בשפה העברית.',
+    icon: BookOpen,
+    gradient: 'from-sky-500 to-blue-600',
+    textColor: 'text-sky-500',
+    category: 'arts'
+  },
+  {
     id: '3dprint',
     title: 'הדפסה תלת ממדית',
     url: 'https://3dprintmaster.vercel.app/',
@@ -59,7 +71,8 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: Wand2,
     gradient: 'from-indigo-500 to-purple-400',
     textColor: 'text-indigo-400',
-    category: 'arts'
+    category: 'arts',
+    featured: true
   },
   {
     id: 'electronics',
@@ -79,6 +92,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: Scissors, // Using Scissors/Craft icon logic
     gradient: 'from-pink-500 to-fuchsia-400',
     textColor: 'text-pink-400',
+    category: 'arts'
+  },
+  {
+    id: 'piano',
+    title: 'לימוד פסנתר',
+    url: 'https://master-piano.vercel.app/',
+    description: 'גלו את עולם המוזיקה, נגינה על פסנתר וקריאת תווים.',
+    icon: Music,
+    gradient: 'from-cyan-500 to-teal-400',
+    textColor: 'text-cyan-400',
     category: 'arts'
   },
   {
