@@ -17,7 +17,12 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02, y: -5 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      transition={{ 
+        type: "spring", 
+        stiffness: 300, 
+        damping: 20,
+        delay: index * 0.05
+      }}
       className={`group relative flex flex-col p-6 rounded-3xl bg-white dark:bg-slate-800/50 transition-all duration-300 overflow-visible ${
         module.featured 
           ? 'border-2 border-amber-400 dark:border-amber-500 shadow-xl shadow-amber-500/10 dark:shadow-amber-900/20 hover:shadow-amber-500/30 dark:hover:shadow-amber-900/40' 
