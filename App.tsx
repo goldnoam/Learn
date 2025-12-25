@@ -13,14 +13,14 @@ const App: React.FC = () => {
   const [showScrollButtons, setShowScrollButtons] = useState(false);
   const firstRender = useRef(true);
   
-  // Theme Toggle State with Persistence
+  // Theme Toggle State with Persistence - Default to 'dark'
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark' || savedTheme === 'light') {
         return savedTheme;
       }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return 'dark';
     }
     return 'dark';
   });
@@ -152,14 +152,24 @@ const App: React.FC = () => {
           <div className="bg-white dark:bg-slate-900 rounded-xl p-6 text-center border border-slate-200 dark:border-slate-800">
             <h2 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">זקוקים לעזרה דחופה?</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-4">לגישה מהירה למספרי חירום ומידע מציל חיים</p>
-            <a 
-              href="https://911il.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center px-6 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-medium transition-colors"
-            >
-              מעבר לאתר החירום
-            </a>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="https://911il.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center px-6 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-medium transition-colors shadow-lg shadow-red-500/20"
+              >
+                מעבר לאתר החירום
+              </a>
+              <a 
+                href="https://bohrim-bahaim.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center px-6 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors shadow-lg shadow-emerald-500/20"
+              >
+                מעבר לאתר המניעה
+              </a>
+            </div>
           </div>
         </div>
 

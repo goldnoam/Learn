@@ -5,10 +5,11 @@ import {
   Printer, 
   Wand2, 
   Cpu, 
-  Scissors, // Used as a proxy for knitting/crafts
+  Scissors,
   Siren,
   Music,
-  BookOpen
+  BookOpen,
+  ShieldAlert
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -89,10 +90,20 @@ export const LEARNING_MODULES: LearningModule[] = [
     title: 'לימוד סריגה',
     url: 'https://soreg-ai.vercel.app',
     description: 'אומנות הסריגה, דוגמאות ויצירה בחוטים.',
-    icon: Scissors, // Using Scissors/Craft icon logic
+    icon: Scissors,
     gradient: 'from-pink-500 to-fuchsia-400',
     textColor: 'text-pink-400',
     category: 'arts'
+  },
+  {
+    id: 'prevention',
+    title: 'מניעת אלכוהול וסמים',
+    url: 'https://bohrim-bahaim.vercel.app/',
+    description: 'העלאת מודעות, כלים להתמודדות ובחירה בחיים בריאים.',
+    icon: ShieldAlert,
+    gradient: 'from-emerald-600 to-teal-500',
+    textColor: 'text-emerald-500',
+    category: 'emergency'
   },
   {
     id: 'piano',
