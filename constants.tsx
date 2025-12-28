@@ -9,7 +9,8 @@ import {
   Siren,
   Music,
   BookOpen,
-  ShieldAlert
+  ShieldAlert,
+  CigaretteOff
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -68,7 +69,7 @@ export const LEARNING_MODULES: LearningModule[] = [
     id: 'magic',
     title: 'האקדמיה של הקסמים',
     url: 'https://magicacademy.vercel.app',
-    description: 'גלו את הסודות שמאחורי הקסמים והאשליות.',
+    description: 'גלו את סודות שמאחורי הקסמים והאשליות.',
     icon: Wand2,
     gradient: 'from-indigo-500 to-purple-400',
     textColor: 'text-indigo-400',
@@ -103,6 +104,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: ShieldAlert,
     gradient: 'from-emerald-600 to-teal-500',
     textColor: 'text-emerald-500',
+    category: 'emergency'
+  },
+  {
+    id: 'smoking-prevention',
+    title: 'מניעת עישון',
+    url: 'https://not-smoking.vercel.app/',
+    description: 'העלאת מודעות לנזקי העישון, כלים להפסקת עישון ושמירה על ריאות נקיות.',
+    icon: CigaretteOff,
+    gradient: 'from-zinc-600 to-slate-500',
+    textColor: 'text-zinc-400',
     category: 'emergency'
   },
   {

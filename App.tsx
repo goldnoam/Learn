@@ -169,6 +169,14 @@ const App: React.FC = () => {
               >
                 מעבר לאתר המניעה
               </a>
+              <a 
+                href="https://not-smoking.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center px-6 py-2 rounded-lg bg-zinc-700 hover:bg-zinc-800 text-white font-medium transition-colors shadow-lg shadow-zinc-500/20"
+              >
+                מעבר לאתר מניעת עישון
+              </a>
             </div>
           </div>
         </div>

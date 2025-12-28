@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Star } from 'lucide-react';
+import { ExternalLink, Star, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LearningModule } from '../types';
 
@@ -9,6 +9,32 @@ interface ModuleCardProps {
 }
 
 const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
+  const handleShare = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const shareData = {
+      title: module.title,
+      text: `${module.description}\n\nנשלח דרך פורטל הלמידה:`,
+      url: module.url,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback for browsers that don't support Web Share API
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`${module.title}: ${module.url}`)}`;
+        window.open(whatsappUrl, '_blank');
+      }
+    } catch (err) {
+      // Ignore abort errors from the user cancelling the share dialog
+      if ((err as Error).name !== 'AbortError') {
+        console.error('Sharing failed:', err);
+      }
+    }
+  };
+
   return (
     <motion.a
       href={module.url}
@@ -42,12 +68,11 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
         </div>
       )}
 
-      {/* Background Gradient Splash (Visible on Hover) - Contained in a rounded div to prevent overflow while allowing tooltip to be visible */}
+      {/* Background Gradient Splash (Visible on Hover) */}
       <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
         <div 
           className={`absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${module.gradient}`} 
         />
-        {/* Bottom accent line moved inside clipped container */}
         <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${module.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right`} />
       </div>
 
@@ -61,12 +86,22 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index }) => {
           {/* Tooltip */}
           <div className="absolute -top-12 right-1/2 translate-x-1/2 px-3 py-1.5 bg-slate-800 dark:bg-slate-900 text-white dark:text-slate-200 text-xs font-medium rounded-lg opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap border border-slate-700 shadow-xl z-50">
             {module.title}
-            {/* Tooltip Arrow */}
             <div className="absolute -bottom-1 right-1/2 translate-x-1/2 w-2 h-2 bg-slate-800 dark:bg-slate-900 border-b border-l border-slate-700 transform -rotate-45"></div>
           </div>
         </div>
 
-        <ExternalLink className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors opacity-0 group-hover:opacity-100" />
+        <div className="flex items-center gap-2">
+          {/* Share Button */}
+          <button
+            onClick={handleShare}
+            className="p-2 rounded-xl bg-slate-100/50 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-white dark:hover:bg-slate-700 transition-all opacity-0 group-hover:opacity-100 border border-transparent hover:border-purple-200 dark:hover:border-purple-900/50"
+            title="שתף נושא זה"
+          >
+            <Share2 className="w-4 h-4" />
+          </button>
+          
+          <ExternalLink className="w-5 h-5 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors opacity-0 group-hover:opacity-100" />
+        </div>
       </div>
 
       <div className="relative z-10 mt-auto">
