@@ -10,7 +10,8 @@ import {
   Music,
   BookOpen,
   ShieldAlert,
-  CigaretteOff
+  CigaretteOff,
+  Utensils
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -85,6 +86,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     gradient: 'from-red-500 to-rose-400',
     textColor: 'text-red-400',
     category: 'tech'
+  },
+  {
+    id: 'little-chef',
+    title: 'Little Chef השף הקטן',
+    url: 'https://little-chef1.vercel.app',
+    description: 'לימוד בישול חווייתי, מתכונים קלים וכיפיים לכל המשפחה.',
+    icon: Utensils,
+    gradient: 'from-orange-400 to-yellow-500',
+    textColor: 'text-orange-500',
+    category: 'arts'
   },
   {
     id: 'knitting',
