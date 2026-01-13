@@ -11,7 +11,8 @@ import {
   BookOpen,
   ShieldAlert,
   CigaretteOff,
-  Utensils
+  Utensils,
+  HeartPulse
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -115,6 +116,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: ShieldAlert,
     gradient: 'from-emerald-600 to-teal-500',
     textColor: 'text-emerald-500',
+    category: 'emergency'
+  },
+  {
+    id: 'first-aid',
+    title: 'לימוד עזרה ראשונה',
+    url: 'https://1aid.vercel.app/',
+    description: 'לימוד עזרה ראשונה מצילה חיים – ידע שיכול לעשות את ההבדל.',
+    icon: HeartPulse,
+    gradient: 'from-rose-500 to-red-600',
+    textColor: 'text-rose-500',
     category: 'emergency'
   },
   {
