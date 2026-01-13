@@ -8,6 +8,15 @@
   }
 }
 
+/* Font Size Modifiers */
+.font-size-sm { font-size: 0.875rem; }
+.font-size-md { font-size: 1rem; }
+.font-size-lg { font-size: 1.125rem; }
+
+.font-size-sm h1 { font-size: 2.5rem; }
+.font-size-md h1 { font-size: 3.5rem; }
+.font-size-lg h1 { font-size: 4.5rem; }
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -28,3 +37,12 @@
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+/* Keyboard Focus Accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2 dark:ring-offset-slate-900;
+}
+
+/* RTL Support for Flexbox and Margin */
+[dir="rtl"] .ml-auto-rtl { margin-right: auto; }
+[dir="ltr"] .ml-auto-rtl { margin-left: auto; }

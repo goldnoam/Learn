@@ -1,5 +1,8 @@
 import { LucideIcon } from 'lucide-react';
 
+export type Language = 'en' | 'he' | 'zh' | 'hi' | 'de' | 'es' | 'fr';
+export type FontSize = 'sm' | 'md' | 'lg';
+
 export interface LearningModule {
   id: string;
   title: string;
