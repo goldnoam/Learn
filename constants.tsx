@@ -12,7 +12,8 @@ import {
   ShieldAlert,
   CigaretteOff,
   Utensils,
-  HeartPulse
+  HeartPulse,
+  Zap
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -86,6 +87,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: Cpu,
     gradient: 'from-red-500 to-rose-400',
     textColor: 'text-red-400',
+    category: 'tech'
+  },
+  {
+    id: 'young-electronics',
+    title: 'האלקטרונאי הצעיר',
+    url: 'https://the-young-electronics-guy.vercel.app/',
+    description: 'מסע מרתק בעולם האלקטרוניקה המיועד לדור הבא של הממציאים.',
+    icon: Zap,
+    gradient: 'from-yellow-400 to-orange-500',
+    textColor: 'text-yellow-500',
     category: 'tech'
   },
   {

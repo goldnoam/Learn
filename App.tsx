@@ -4,7 +4,7 @@ import ModuleCard from './components/ModuleCard';
 import SkeletonCard from './components/SkeletonCard';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
-import { Search, ArrowUp, ArrowDown, Sun, Moon, Type, Languages, X, Download } from 'lucide-react';
+import { Search, ArrowUp, Sun, Moon, Type, Languages, X, Download } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { translations } from './translations';
 import { Language, FontSize } from './types';
@@ -25,9 +25,8 @@ export const speak = (text: string, lang: Language) => {
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [showScrollButtons, setShowScrollButtons] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const firstRender = useRef(true);
   
   // States
   const [language, setLanguage] = useState<Language>(() => {
@@ -72,9 +71,9 @@ const App: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Scroll visibility
+  // Scroll visibility for Top button
   useEffect(() => {
-    const handleScroll = () => setShowScrollButtons(window.scrollY > 300);
+    const handleScroll = () => setShowScrollTop(window.scrollY > 400);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -293,32 +292,20 @@ const App: React.FC = () => {
 
         <Footer language={language} />
         
-        {/* Scroll Buttons */}
+        {/* Floating Scroll to Top Button */}
         <AnimatePresence>
-          {showScrollButtons && (
-            <div className="fixed bottom-8 left-8 right-8 z-50 flex justify-between pointer-events-none">
-              <motion.button
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-                className="pointer-events-auto p-4 bg-purple-600 hover:bg-purple-500 text-white rounded-full shadow-2xl border border-white/20 transition-all group"
-                aria-label="Scroll Down"
-              >
-                <ArrowDown className="w-6 h-6 group-hover:translate-y-1 transition-transform" />
-              </motion.button>
-
-              <motion.button
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="pointer-events-auto p-4 bg-purple-600 hover:bg-purple-500 text-white rounded-full shadow-2xl border border-white/20 transition-all group"
-                aria-label="Scroll Up"
-              >
-                <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
-              </motion.button>
-            </div>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.8 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className={`fixed bottom-8 ${language === 'he' ? 'left-8' : 'right-8'} z-50 p-4 bg-purple-600 hover:bg-purple-500 text-white rounded-full shadow-2xl border border-white/20 transition-all group flex items-center justify-center pointer-events-auto`}
+              aria-label="Scroll to top"
+              onMouseEnter={() => speak("חזרה למעלה", language)}
+            >
+              <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+            </motion.button>
           )}
         </AnimatePresence>
       </div>
