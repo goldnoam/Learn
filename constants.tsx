@@ -13,7 +13,8 @@ import {
   CigaretteOff,
   Utensils,
   HeartPulse,
-  Zap
+  Zap,
+  ShieldCheck
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -127,6 +128,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: ShieldAlert,
     gradient: 'from-emerald-600 to-teal-500',
     textColor: 'text-emerald-500',
+    category: 'emergency'
+  },
+  {
+    id: 'road-safety',
+    title: 'משמרות הזהירות בדרכים',
+    url: 'https://zahavil.vercel.app/',
+    description: 'לימוד זהירות בדרכים ושמירה על כללי הבטיחות בכביש למען הגנה על החיים.',
+    icon: ShieldCheck,
+    gradient: 'from-yellow-500 to-amber-600',
+    textColor: 'text-amber-500',
     category: 'emergency'
   },
   {

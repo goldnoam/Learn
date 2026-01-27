@@ -16,7 +16,7 @@ export const speak = (text: string, lang: Language) => {
   const utterance = new SpeechSynthesisUtterance(text);
   // Map our language keys to BCP 47 codes
   const langMap: Record<Language, string> = {
-    he: 'he-IL', en: 'en-US', zh: 'zh-CN', hi: 'hi-IN', de: 'de-DE', es: 'es-ES', fr: 'fr-FR'
+    he: 'he-IL', en: 'en-US', zh: 'zh-CN', hi: 'hi-IN', de: 'de-DE', es: 'es-ES', fr: 'fr-FR', pt: 'pt-BR', it: 'it-IT'
   };
   utterance.lang = langMap[lang];
   window.speechSynthesis.speak(utterance);
@@ -102,7 +102,7 @@ const App: React.FC = () => {
     setFontSize(p => sizes[(sizes.indexOf(p) + 1) % sizes.length]);
   };
   const toggleLanguage = () => {
-    const langs: Language[] = ['he', 'en', 'es', 'fr', 'de', 'zh', 'hi'];
+    const langs: Language[] = ['he', 'en', 'es', 'fr', 'de', 'zh', 'hi', 'pt', 'it'];
     setLanguage(p => langs[(langs.indexOf(p) + 1) % langs.length]);
   };
 
