@@ -14,7 +14,10 @@ import {
   Utensils,
   HeartPulse,
   Zap,
-  ShieldCheck
+  ShieldCheck,
+  Candy,
+  Activity,
+  Flag
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -121,6 +124,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     category: 'arts'
   },
   {
+    id: 'flags',
+    title: 'לימוד דגלי מדינות',
+    url: 'https://flags1.vercel.app',
+    description: 'הכירו את דגלי העולם, עובדות מעניינות על מדינות וגיאוגרפיה.',
+    icon: Flag,
+    gradient: 'from-blue-600 to-indigo-500',
+    textColor: 'text-blue-500',
+    category: 'arts'
+  },
+  {
     id: 'prevention',
     title: 'מניעת אלכוהול וסמים',
     url: 'https://bohrim-bahaim.vercel.app/',
@@ -158,6 +171,26 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: CigaretteOff,
     gradient: 'from-zinc-600 to-slate-500',
     textColor: 'text-zinc-400',
+    category: 'emergency'
+  },
+  {
+    id: 'sugar-awareness',
+    title: 'מודעות לגבי נזקי מזון עתיר סוכר',
+    url: 'https://sugar-awareness.vercel.app',
+    description: 'העלאת מודעות לנזקי הסוכר, בחירת תחליפים בריאים ושיפור התזונה.',
+    icon: Candy,
+    gradient: 'from-pink-400 to-rose-500',
+    textColor: 'text-pink-500',
+    category: 'emergency'
+  },
+  {
+    id: 'salt-awareness',
+    title: 'מודעות לגבי מזון עתיר מלח',
+    url: 'https://salt-awareness.vercel.app',
+    description: 'הבנת ההשפעה של צריכת מלח גבוהה על הבריאות ולחץ הדם.',
+    icon: Activity,
+    gradient: 'from-slate-400 to-slate-600',
+    textColor: 'text-slate-500',
     category: 'emergency'
   },
   {
