@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Mail } from 'lucide-react';
 import { translations } from '../translations';
@@ -18,7 +17,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
         </p>
         <div className="hidden md:block w-px h-4 bg-slate-300 dark:bg-slate-700"></div>
         <div className="flex items-center gap-2">
-          <span className="font-medium">Send Feedback</span>
+          <span className="font-medium">{t.feedback}</span>
           <a 
             href="mailto:goldnoamai@gmail.com" 
             className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors group"
