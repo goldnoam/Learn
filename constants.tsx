@@ -17,7 +17,9 @@ import {
   ShieldCheck,
   Candy,
   Activity,
-  Flag
+  Flag,
+  Eye,
+  Keyboard
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -40,6 +42,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: Atom,
     gradient: 'from-purple-500 to-violet-400',
     textColor: 'text-purple-400',
+    category: 'science'
+  },
+  {
+    id: 'senses',
+    title: 'חמשת החושים',
+    url: 'https://senses12.vercel.app/',
+    description: 'מסע מרתק בעולם החושים: ראייה, שמיעה, ריח, טעם ומימוש.',
+    icon: Eye,
+    gradient: 'from-lime-500 to-green-400',
+    textColor: 'text-lime-500',
     category: 'science'
   },
   {
@@ -101,6 +113,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: Zap,
     gradient: 'from-yellow-400 to-orange-500',
     textColor: 'text-yellow-500',
+    category: 'tech'
+  },
+  {
+    id: 'touch-typing',
+    title: 'לימוד הקלדה עיוורת',
+    url: 'https://cheetah-touch-typing.vercel.app/',
+    description: 'שפרו את המהירות והדיוק שלכם בהקלדה בעזרת תרגול מהיר ומהנה.',
+    icon: Keyboard,
+    gradient: 'from-amber-400 to-yellow-600',
+    textColor: 'text-amber-500',
     category: 'tech'
   },
   {
