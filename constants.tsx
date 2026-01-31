@@ -19,7 +19,8 @@ import {
   Activity,
   Flag,
   Eye,
-  Keyboard
+  Keyboard,
+  Telescope
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -42,6 +43,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     icon: Atom,
     gradient: 'from-purple-500 to-violet-400',
     textColor: 'text-purple-400',
+    category: 'science'
+  },
+  {
+    id: 'cosmos',
+    title: 'קוסמוס - חלל ואסטרונומיה',
+    url: 'https://cosmoskids.vercel.app/',
+    description: 'גלו את נפלאות היקום, כוכבי הלכת והגלקסיות הרחוקות במסע בין כוכבים מרתק.',
+    icon: Telescope,
+    gradient: 'from-indigo-900 to-purple-800',
+    textColor: 'text-indigo-300',
     category: 'science'
   },
   {

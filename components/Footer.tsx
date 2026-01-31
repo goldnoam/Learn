@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Mail } from 'lucide-react';
 import { translations } from '../translations';
@@ -16,16 +17,19 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           (C) Noam Gold AI 2026
         </p>
         <div className="hidden md:block w-px h-4 bg-slate-300 dark:bg-slate-700"></div>
-        <a 
-          href="mailto:goldnoamai@gmail.com" 
-          className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors group"
-        >
-          <Mail className="w-4 h-4 group-hover:animate-bounce" />
-          <span>{t.feedback}: goldnoamai@gmail.com</span>
-        </a>
+        <div className="flex items-center gap-2">
+          <span className="font-medium">Send Feedback</span>
+          <a 
+            href="mailto:goldnoamai@gmail.com" 
+            className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors group"
+          >
+            <Mail className="w-4 h-4 group-hover:animate-bounce" />
+            <span>goldnoamai@gmail.com</span>
+          </a>
+        </div>
       </div>
       
-      {/* Simple AdSense Placeholder */}
+      {/* Ready for Google Adsense */}
       <div className="max-w-4xl mx-auto mt-8 opacity-60 grayscale hover:grayscale-0 transition-all">
         <ins className="adsbygoogle"
              style={{ display: 'block' }}
@@ -34,7 +38,9 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>
+             {`
              (window.adsbygoogle = window.adsbygoogle || []).push({});
+             `}
         </script>
       </div>
     </footer>

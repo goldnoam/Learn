@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+
+// Import React to fix "Cannot find namespace 'React'" errors
+import React, { useState, useEffect, useMemo } from 'react';
 import { LEARNING_MODULES } from './constants';
 import ModuleCard from './components/ModuleCard';
 import SkeletonCard from './components/SkeletonCard';
@@ -22,13 +24,14 @@ export const speak = (text: string, lang: Language) => {
   window.speechSynthesis.speak(utterance);
 };
 
+// Fixed React.FC by importing React
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   
-  // States
+  // States - Defaulted to dark theme as requested
   const [language, setLanguage] = useState<Language>(() => {
     return (localStorage.getItem('lang') as Language) || 'he';
   });
@@ -40,6 +43,15 @@ const App: React.FC = () => {
   });
 
   const t = translations[language];
+
+  // Update document metadata for SEO
+  useEffect(() => {
+    document.title = t.badgesTitle + " | " + t.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', t.subtitle + " " + t.subtitle2);
+    }
+  }, [language, t]);
 
   // Language Persistence & Direction
   useEffect(() => {
@@ -116,6 +128,7 @@ const App: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
+  // Fixed React.DragEvent by importing React
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     const text = e.dataTransfer.getData('text');
