@@ -20,7 +20,9 @@ import {
   Flag,
   Eye,
   Keyboard,
-  Telescope
+  Telescope,
+  Pickaxe,
+  Palette
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -54,6 +56,26 @@ export const LEARNING_MODULES: LearningModule[] = [
     gradient: 'from-indigo-900 to-purple-800',
     textColor: 'text-indigo-300',
     category: 'science'
+  },
+  {
+    id: 'goldcraft',
+    title: 'GoldCraft - טיפים למיינקראפט',
+    url: 'https://goldcraft.vercel.app',
+    description: 'מדריכים, טיפים וסודות למשחק הפופולרי בעולם. למדו לבנות, לשרוד וליצור כמו מקצוענים.',
+    icon: Pickaxe,
+    gradient: 'from-yellow-600 to-amber-400',
+    textColor: 'text-yellow-600',
+    category: 'arts'
+  },
+  {
+    id: 'mobilepaint',
+    title: 'MobilePaint - ציור דיגיטלי',
+    url: 'https://mobilepaint.vercel.app',
+    description: 'הפכו את המכשיר שלכם לקנבס דיגיטלי. כלי ציור פשוטים וחזקים ליצירה בכל מקום.',
+    icon: Palette,
+    gradient: 'from-pink-500 via-purple-500 to-indigo-500',
+    textColor: 'text-purple-500',
+    category: 'arts'
   },
   {
     id: 'senses',
