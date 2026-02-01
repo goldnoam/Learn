@@ -3,7 +3,6 @@ import { ExternalLink, Star, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LearningModule, Language } from '../types';
 import { translations } from '../translations';
-import { speak } from '../App';
 
 interface ModuleCardProps {
   module: LearningModule;
@@ -38,10 +37,6 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index, language }) => {
     }
   };
 
-  const handleMouseEnter = () => {
-    speak(module.title, language);
-  };
-
   return (
     <motion.a
       href={module.url}
@@ -64,7 +59,6 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ module, index, language }) => {
         y: -4,
         transition: { type: "spring", stiffness: 260, damping: 20 }
       }}
-      onMouseEnter={handleMouseEnter}
       className={`group relative flex flex-col p-6 rounded-3xl bg-white dark:bg-slate-800/50 transition-all duration-300 overflow-visible outline-none ring-offset-transparent focus-within:ring-2 focus-within:ring-purple-500 ${
         module.featured 
           ? 'border-2 border-amber-400 dark:border-amber-500 shadow-xl shadow-amber-500/10 dark:shadow-amber-900/20 hover:shadow-amber-500/30 dark:hover:shadow-amber-900/40' 

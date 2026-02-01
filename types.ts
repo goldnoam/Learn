@@ -11,6 +11,6 @@ export interface LearningModule {
   icon: LucideIcon;
   gradient: string;
   textColor: string;
-  category: 'science' | 'arts' | 'tech' | 'emergency';
+  category: 'science' | 'arts' | 'tech' | 'emergency' | 'gaming';
   featured?: boolean;
 }

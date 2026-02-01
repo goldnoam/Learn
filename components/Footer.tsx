@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Mail } from 'lucide-react';
 import { translations } from '../translations';
 import { Language } from '../types';
@@ -9,6 +9,16 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ language }) => {
   const t = translations[language];
+
+  useEffect(() => {
+    try {
+      // @ts-ignore
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error('AdSense error:', e);
+    }
+  }, []);
+
   return (
     <footer className="py-12 text-center text-slate-500 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800/50 mt-20 space-y-4">
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-sm">
@@ -28,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
         </div>
       </div>
       
-      {/* Ready for Google Adsense */}
+      {/* Ready for Google AdSense */}
       <div className="max-w-4xl mx-auto mt-8 opacity-60 grayscale hover:grayscale-0 transition-all">
         <ins className="adsbygoogle"
              style={{ display: 'block' }}
@@ -36,11 +46,6 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
              data-ad-slot="footer-slot"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>
-             {`
-             (window.adsbygoogle = window.adsbygoogle || []).push({});
-             `}
-        </script>
       </div>
     </footer>
   );

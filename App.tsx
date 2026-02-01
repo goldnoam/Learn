@@ -1,4 +1,3 @@
-
 // Import React to fix "Cannot find namespace 'React'" errors
 import React, { useState, useEffect, useMemo } from 'react';
 import { LEARNING_MODULES } from './constants';
@@ -11,20 +10,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { translations } from './translations';
 import { Language, FontSize } from './types';
 
-// Simple TTS Helper
-export const speak = (text: string, lang: Language) => {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  // Map our language keys to BCP 47 codes
-  const langMap: Record<Language, string> = {
-    he: 'he-IL', en: 'en-US', zh: 'zh-CN', hi: 'hi-IN', de: 'de-DE', es: 'es-ES', fr: 'fr-FR', pt: 'pt-BR', it: 'it-IT'
-  };
-  utterance.lang = langMap[lang];
-  window.speechSynthesis.speak(utterance);
-};
-
-// Fixed React.FC by importing React
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +34,7 @@ const App: React.FC = () => {
     document.title = t.badgesTitle + " | " + t.title;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', t.subtitle + " " + t.subtitle2);
+      metaDesc.setAttribute('content', `${t.subtitle} ${t.subtitle2}`);
     }
   }, [language, t]);
 
@@ -128,7 +113,6 @@ const App: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
-  // Fixed React.DragEvent by importing React
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     const text = e.dataTransfer.getData('text');
@@ -146,7 +130,6 @@ const App: React.FC = () => {
               onClick={toggleTheme}
               className="p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-lg border border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform active:scale-95"
               aria-label={t.themeToggle}
-              onMouseEnter={() => speak(t.themeToggle, language)}
             >
               {theme === 'dark' ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-slate-600" />}
             </button>
@@ -154,7 +137,6 @@ const App: React.FC = () => {
               onClick={toggleFontSize}
               className="p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-lg border border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform active:scale-95 flex items-center gap-1"
               aria-label={t.fontToggle}
-              onMouseEnter={() => speak(t.fontToggle, language)}
             >
               <Type className="w-5 h-5" />
               <span className="text-xs font-bold uppercase">{fontSize}</span>
@@ -163,7 +145,6 @@ const App: React.FC = () => {
               onClick={toggleLanguage}
               className="p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-lg border border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform active:scale-95 flex items-center gap-1"
               aria-label={t.langToggle}
-              onMouseEnter={() => speak(t.langToggle, language)}
             >
               <Languages className="w-5 h-5" />
               <span className="text-xs font-bold uppercase">{language}</span>
@@ -277,7 +258,6 @@ const App: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold transition-all shadow-lg hover:scale-105 active:scale-95"
-                onMouseEnter={() => speak(t.emergencyBtn, language)}
               >
                 {t.emergencyBtn}
               </a>
@@ -286,7 +266,6 @@ const App: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-all shadow-lg hover:scale-105 active:scale-95"
-                onMouseEnter={() => speak(t.preventionBtn, language)}
               >
                 {t.preventionBtn}
               </a>
@@ -295,7 +274,6 @@ const App: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-zinc-700 hover:bg-zinc-800 text-white font-bold transition-all shadow-lg hover:scale-105 active:scale-95"
-                onMouseEnter={() => speak(t.smokingBtn, language)}
               >
                 {t.smokingBtn}
               </a>
@@ -315,7 +293,6 @@ const App: React.FC = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className={`fixed bottom-8 ${language === 'he' ? 'left-8' : 'right-8'} z-50 p-4 bg-purple-600 hover:bg-purple-500 text-white rounded-full shadow-2xl border border-white/20 transition-all group flex items-center justify-center pointer-events-auto`}
               aria-label="Scroll to top"
-              onMouseEnter={() => speak("חזרה למעלה", language)}
             >
               <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
             </motion.button>
