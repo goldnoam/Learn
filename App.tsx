@@ -1,14 +1,14 @@
 // Import React to fix "Cannot find namespace 'React'" errors
 import React, { useState, useEffect, useMemo } from 'react';
-import { LEARNING_MODULES } from './constants';
-import ModuleCard from './components/ModuleCard';
-import SkeletonCard from './components/SkeletonCard';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
+import { LEARNING_MODULES } from './constants.tsx';
+import ModuleCard from './components/ModuleCard.tsx';
+import SkeletonCard from './components/SkeletonCard.tsx';
+import Hero from './components/Hero.tsx';
+import Footer from './components/Footer.tsx';
 import { Search, ArrowUp, Sun, Moon, Type, Languages, X, Download } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { translations } from './translations';
-import { Language, FontSize } from './types';
+import { translations } from './translations.ts';
+import { Language, FontSize } from './types.ts';
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');

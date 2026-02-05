@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
-import { translations } from '../translations';
-import { Language } from '../types';
+import { translations } from '../translations.ts';
+import { Language } from '../types.ts';
 
 interface HeroProps {
   language: Language;

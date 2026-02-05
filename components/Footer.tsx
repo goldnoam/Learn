@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Mail } from 'lucide-react';
-import { translations } from '../translations';
-import { Language } from '../types';
+import { translations } from '../translations.ts';
+import { Language } from '../types.ts';
 
 interface FooterProps {
   language: Language;

@@ -25,7 +25,7 @@ import {
   Palette,
   Flower
 } from 'lucide-react';
-import { LearningModule } from './types';
+import { LearningModule } from './types.ts';
 
 export const LEARNING_MODULES: LearningModule[] = [
   {

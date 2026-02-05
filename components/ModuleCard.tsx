@@ -1,8 +1,8 @@
 import React from 'react';
 import { ExternalLink, Star, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { LearningModule, Language } from '../types';
-import { translations } from '../translations';
+import { LearningModule, Language } from '../types.ts';
+import { translations } from '../translations.ts';
 
 interface ModuleCardProps {
   module: LearningModule;
