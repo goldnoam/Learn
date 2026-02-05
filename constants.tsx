@@ -22,7 +22,8 @@ import {
   Keyboard,
   Telescope,
   Pickaxe,
-  Palette
+  Palette,
+  Flower
 } from 'lucide-react';
 import { LearningModule } from './types';
 
@@ -48,6 +49,16 @@ export const LEARNING_MODULES: LearningModule[] = [
     textColor: 'text-purple-500',
     category: 'tech',
     featured: true
+  },
+  {
+    id: 'mindfulness',
+    title: 'מיינדפולנס ומודעות',
+    url: 'https://mindfulness1.vercel.app/',
+    description: 'תרגול רוגע, ריכוז וחיבור פנימי לשיפור איכות החיים והפחתת מתחים יומיומיים.',
+    icon: Flower,
+    gradient: 'from-emerald-400 to-teal-500',
+    textColor: 'text-emerald-500',
+    category: 'arts'
   },
   {
     id: 'math',
